@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 24 Bulan Mei 2022 pada 18.50
+-- Waktu pembuatan: 24 Bulan Mei 2022 pada 21.32
 -- Versi server: 8.0.29-0ubuntu0.20.04.3
 -- Versi PHP: 7.4.3
 
@@ -37,6 +37,14 @@ CREATE TABLE `detail_transaksi` (
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data untuk tabel `detail_transaksi`
+--
+
+INSERT INTO `detail_transaksi` (`id_detail_transaksi`, `id_transaksi`, `id_paket`, `qty`, `keterangan`, `createdAt`, `updatedAt`) VALUES
+(12, 9, 8, 12000, NULL, '2022-05-18 14:30:50', '2022-05-24 12:47:06'),
+(13, 10, 17, 2, NULL, '2022-05-24 12:41:46', '2022-05-24 13:42:43');
 
 -- --------------------------------------------------------
 
@@ -110,7 +118,8 @@ CREATE TABLE `paket` (
 INSERT INTO `paket` (`id_paket`, `id_outlet`, `jenis`, `nama_paket`, `harga`, `createdAt`, `updatedAt`) VALUES
 (8, 3, 'kiloan', 'baju putih', 15000, '2022-05-18 14:30:50', '2022-05-18 14:52:17'),
 (15, 1, 'kaos', 'Baju Putih', 5000, '2022-05-24 11:47:07', '2022-05-24 11:47:07'),
-(16, 1, 'kiloan', 'Kemeja', 7000, '2022-05-24 11:47:22', '2022-05-24 11:47:22');
+(16, 1, 'kiloan', 'Kemeja', 7000, '2022-05-24 11:47:22', '2022-05-24 11:47:22'),
+(17, 1, 'kiloan', 'baju biru', 12000, '2022-05-24 12:41:46', '2022-05-24 12:41:46');
 
 -- --------------------------------------------------------
 
@@ -159,6 +168,14 @@ CREATE TABLE `transaksi` (
   `updatedAt` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Dumping data untuk tabel `transaksi`
+--
+
+INSERT INTO `transaksi` (`id_transaksi`, `id_outlet`, `kode_invoice`, `id_member`, `tgl`, `batas_waktu`, `tgl_bayar`, `biaya_tambahan`, `diskon`, `pajak`, `status`, `dibayar`, `id_user`, `total`, `createdAt`, `updatedAt`) VALUES
+(9, 3, 'LNDRY-1653396426541', 1, '2022-05-24 00:00:00', '2022-05-27 12:47:06', '2022-05-24 00:00:00', NULL, NULL, NULL, 'diambil', 'dibayar', 10, 189000000, '2022-05-24 12:47:06', '2022-05-24 12:47:12'),
+(10, 1, 'LNDRY-1653399763453', 2, '2022-05-24 00:00:00', '2022-05-27 13:42:43', '2022-05-24 00:00:00', NULL, NULL, NULL, 'diambil', 'dibayar', 2, 25200, '2022-05-24 13:42:43', '2022-05-24 13:42:52');
+
 -- --------------------------------------------------------
 
 --
@@ -183,7 +200,9 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id_user`, `nama`, `username`, `password`, `id_outlet`, `role`, `createdAt`, `updatedAt`) VALUES
 (2, 'admin', 'admin', '21232f297a57a5a743894a0e4a801fc3', 1, 'admin', '2022-05-18 10:17:58', '2022-05-18 10:17:58'),
 (4, 'owner', 'owner', '72122ce96bfec66e2396d2e25225d70a', 1, 'owner', '2022-05-18 10:23:49', '2022-05-18 10:23:49'),
-(8, 'kasir', 'kasir', '827ccb0eea8a706c4c34a16891f84e7b', 1, 'kasir', '2022-05-24 11:38:23', '2022-05-24 11:48:54');
+(8, 'kasir', 'kasir', '827ccb0eea8a706c4c34a16891f84e7b', 1, 'kasir', '2022-05-24 11:38:23', '2022-05-24 11:48:54'),
+(10, 'admin1', 'admin1', 'e00cf25ad42683b3df678c61f42c6bda', 3, 'admin', '2022-05-24 12:46:37', '2022-05-24 12:46:37'),
+(11, 'owner1', 'owner1', '4ef5ba0c918c537fadba2ada54e3dd68', 3, 'owner', '2022-05-24 13:41:09', '2022-05-24 13:41:09');
 
 --
 -- Indexes for dumped tables
@@ -248,7 +267,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `detail_transaksi`
 --
 ALTER TABLE `detail_transaksi`
-  MODIFY `id_detail_transaksi` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_detail_transaksi` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `member`
@@ -266,19 +285,19 @@ ALTER TABLE `outlet`
 -- AUTO_INCREMENT untuk tabel `paket`
 --
 ALTER TABLE `paket`
-  MODIFY `id_paket` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_paket` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_transaksi` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -292,10 +311,10 @@ ALTER TABLE `detail_transaksi`
   ADD CONSTRAINT `detail_transaksi_ibfk_2` FOREIGN KEY (`id_paket`) REFERENCES `paket` (`id_paket`);
 
 --
--- Ketidakleluasaan untuk tabel `paket`
+-- Ketidakleluasaan untuk tabel `outlet`
 --
-ALTER TABLE `paket`
-  ADD CONSTRAINT `paket_ibfk_1` FOREIGN KEY (`id_outlet`) REFERENCES `outlet` (`id_outlet`);
+ALTER TABLE `outlet`
+  ADD CONSTRAINT `outlet_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
 
 --
 -- Ketidakleluasaan untuk tabel `transaksi`
@@ -304,12 +323,6 @@ ALTER TABLE `transaksi`
   ADD CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`id_outlet`) REFERENCES `outlet` (`id_outlet`),
   ADD CONSTRAINT `transaksi_ibfk_2` FOREIGN KEY (`id_member`) REFERENCES `member` (`id_member`),
   ADD CONSTRAINT `transaksi_ibfk_3` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
-
---
--- Ketidakleluasaan untuk tabel `user`
---
-ALTER TABLE `user`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`id_outlet`) REFERENCES `outlet` (`id_outlet`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
