@@ -71,11 +71,7 @@ class User extends React.Component {
       .then(res => {
         this.setState({
           user: res.data.user
-        })
-        // console.log(this.state.user)
-      })
-      .catch(error => {
-        // console.log(error)
+        })        
       })
   }
 
@@ -92,13 +88,8 @@ class User extends React.Component {
           role: item.role,
           id_user: item.id_user,
           action: "update"
-        })
-        // console.log(this.state.outletname)
-      })
-      .catch(error => {
-        // console.log(error)
-      })
-
+        })        
+      })      
   }
 
   handleAdd = () => {
@@ -127,21 +118,17 @@ class User extends React.Component {
     if (this.state.action === "insert") {
       url = "http://localhost:8080/user/"
       axios.post(url, form, this.headerConfig())
-        .then(response => {
-          // window.alert(response.data.message)
+        .then(response => {        
           this.getUser()
           this.handleColse()
-        })
-        // .catch(error => console.log(error))
+        })        
     } else if (this.state.action === "update") {
       url = "http://localhost:8080/user/" + this.state.id_user
       axios.put(url, form, this.headerConfig())
-        .then(response => {
-          // window.alert(response.data.message)
+        .then(response => {        
           this.getUser()
           this.handleColse()
-        })
-        // .catch(error => console.log(error))
+        })        
     }
     this.setState({
       isModalOpen: false
@@ -154,11 +141,7 @@ class User extends React.Component {
       .then(res => {
         this.setState({
           outlet: res.data.outlet
-        })
-        // console.log(this.state.outlet)
-      })
-      .catch(error => {
-        // console.log(error)
+        })        
       })
   }
 
@@ -167,12 +150,8 @@ class User extends React.Component {
     if (window.confirm("Are you sure to delete this data?")) {
       axios.delete(url)
         .then(res => {
-          // console.log(res.data.message)
           this.getUser()
-        })
-        .catch(err => {
-          // console.log(err.message)
-        })
+        })        
     }
   }
 
@@ -214,7 +193,7 @@ class User extends React.Component {
                     <td>{item.role}</td>
                     <td>
                       <button className="bg-blue-500 hover:bg-blue-700 text-white p-2" onClick={() => this.handleEdit(item)}><Edit /></button>
-                      <button className="ml-2 bg-red-500 hover:bg-red-700 text-white p-2" id="blue" onClick={() => this.Drop(item.id_outlet)}><Trash /></button>
+                      <button className="ml-2 bg-red-500 hover:bg-red-700 text-white p-2" id="blue" onClick={() => this.Drop(item.id_user)}><Trash /></button>
                     </td>
                   </tr>
                 )
@@ -222,7 +201,6 @@ class User extends React.Component {
             </tbody>
           </table>
           <br></br>
-
 
 
         </div>

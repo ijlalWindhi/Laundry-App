@@ -202,7 +202,7 @@ class Member extends React.Component {
                     <td>{item.tlp}</td>
                     <td>
                     <button className="bg-blue-500 hover:bg-blue-700 text-white p-2" onClick={() => this.handleEdit(item)}><Edit /></button>
-                      <button className="ml-2 bg-red-500 hover:bg-red-700 text-white p-2" id="blue" onClick={() => this.Drop(item.id_outlet)}><Trash /></button>
+                      <button className="ml-2 bg-red-500 hover:bg-red-700 text-white p-2" id="blue" onClick={() => this.Drop(item.id_member)}><Trash /></button>
                     </td>
                   </tr>
                 )

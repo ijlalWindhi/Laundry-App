@@ -326,7 +326,7 @@ class Transaksi extends Component {
                                 <td>Rp. {item.total}</td>
                     <td>
                     <button className="bg-blue-500 hover:bg-blue-700 text-white p-2" onClick={() => this.handleEdit(item)}><Edit /></button>
-                    <button className="ml-2 bg-red-500 hover:bg-red-700 text-white p-2" id="blue" onClick={() => this.Drop(item.id_outlet)}><Trash /></button>
+                    <button className="ml-2 bg-red-500 hover:bg-red-700 text-white p-2" id="blue" onClick={() => this.Drop(item.id_transaksi)}><Trash /></button>
                     <button className="ml-2 bg-green-500 hover:bg-green-700 text-white px-4 py-1 mt-2" onClick={() => this.Detail(item.id_transaksi)}>Detail</button>
                     </td>
                   </tr>
@@ -353,7 +353,7 @@ class Transaksi extends Component {
               </Form.Group>
             </Modal.Body>
             <Modal.Footer>
-              <Button className='bg-green-500' id="blue">
+              <Button type="submit" className='bg-green-500' id="blue">
                 Save
               </Button>
             </Modal.Footer>

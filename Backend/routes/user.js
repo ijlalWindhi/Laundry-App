@@ -50,7 +50,7 @@ app.get("/:id_user", async (req, res) =>{
 })
 
 //endpoint untuk menyimpan data user, METHOD: POST, function: create
-app.post("/", auth, (req,res) => {
+app.post("/", (req,res) => {
     let data = {
         nama : req.body.nama,
         username : req.body.username,
