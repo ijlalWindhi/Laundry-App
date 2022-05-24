@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import Navbar from '../components/Navbar';
-import Card from '../components/Card';
-import {Link, NavLink} from 'react-router-dom';
 import axios from 'axios';
 import { Modal, Button, Form } from 'react-bootstrap';
-import { MdAdd, MdEdit, MdDeleteOutline } from 'react-icons/md';
 import { Badge} from 'react-bootstrap';
 import NavbarOwner from '../components/NavbarOwner';
 
@@ -13,6 +9,7 @@ class Laporan extends Component {
   constructor() {
     super();
     this.state = {
+      // pembayaran: [],
       transaksi: [],
       outlet: [],
       member: [],
@@ -54,9 +51,6 @@ class Laporan extends Component {
         window.location = '/login'
       }
     } 
-    // else {
-    //   window.location = "/login"
-    // }
   }
 
   headerConfig = () => {
@@ -86,11 +80,13 @@ class Laporan extends Component {
 
   getTransaksi = () => {
     let url = "http://localhost:8080/transaksi/getByOut/" + this.state.outletid
+    // let url = "http://localhost:8080/transaksi/"
     axios.get(url)
       .then(res => {
         this.setState({
           transaksi: res.data.transaksi
         })
+        console.log(this.state.transaksi)
       })
       .catch(error => {
         console.log(error)
@@ -179,7 +175,7 @@ class Laporan extends Component {
               {this.state.transaksi.map((item, index) => {
                 return (
                   <tr key={index}>
-                    <td>{item.kode_invoice}</td>
+                    <td>{item.kode_invoice}</td>                
                     <td>{item.member.nama}</td>
                     <td>{item.tgl}</td>
                     <td>{item.batas_waktu}</td>
@@ -217,24 +213,7 @@ class Laporan extends Component {
             <Modal.Title>Transaction Data</Modal.Title>
           </Modal.Header>
           <Form onSubmit={e => this.handleSave(e)}>
-            <Modal.Body>
-            {/* <Form.Group className="mb-2" controlId="gender">
-                <Form.Label>Member Name</Form.Label>
-                <Form.Select type="text" name="id_member" onChange={this.handleChange}>
-                  {this.state.action === "update" &&
-                    <option value={this.state.id_member}>{this.state.member.nama}</option>
-                  }
-                  {this.state.action === "insert" &&
-                    <option value=""></option>
-                  }
-                  {this.state.member.map((item, index) => {
-                    return (
-                      <option value={item.id_member}>{item.nama}</option>
-                    )
-                  })}
-                </Form.Select>
-              </Form.Group> */}
-           
+            <Modal.Body>                       
               <Form.Group className="mb-2" controlId="status">
                 <Form.Label>Status</Form.Label>
                 <Form.Select type="text" name="status" onChange={this.handleChange} >
@@ -260,28 +239,7 @@ class Laporan extends Component {
               </Button>
             </Modal.Footer>
           </Form>
-        </Modal>
-
-
-        <Modal show={this.state.isModalPw} onHide={this.handleClose} centered>
-          <Modal.Header closeButton>
-            <Modal.Title>Update Password</Modal.Title>
-          </Modal.Header>
-          <Form onSubmit={e => this.handleSavePw(e)}>
-            <Modal.Body>
-              <Form.Group className="mb-2" controlId="password">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" name="password_user" value={this.state.password_user} placeholder="Masukkan password"
-                  onChange={this.handleChange} />
-              </Form.Group>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="primary" type="submit" id="blue">
-                Save
-              </Button>
-            </Modal.Footer>
-          </Form>
-        </Modal>
+        </Modal>        
       </div>
     );
   }

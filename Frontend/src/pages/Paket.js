@@ -139,7 +139,7 @@ class Paket extends Component {
     let form = new FormData()
 
     form.append("nama_paket", this.state.nama_paket)
-    form.append("id_outlet", this.state.id_outlet)
+    // form.append("id_outlet", this.state.id_outlet)
     form.append("harga", this.state.harga)
     form.append("jenis", this.state.jenis)
 
@@ -147,7 +147,7 @@ class Paket extends Component {
     if (this.state.action === "insert") {
       url = "http://localhost:8080/paket/"
       axios.post(url, form)
-      console.log(this.state.id_outlet)
+      // console.log(this.state.id_outlet)
         .then(res => {
           this.getPacket()
           this.handleClose()

@@ -177,7 +177,7 @@ class User extends React.Component {
                 <th>User ID</th>
                 <th>Name</th>
                 <th>Username</th>
-                <th>Outlet</th>
+                {/* <th>Outlet</th> */}
                 <th>Role</th>
                 <th>Aksi</th>
               </tr>
@@ -189,7 +189,7 @@ class User extends React.Component {
                     <td>{item.id_user}</td>
                     <td>{item.nama}</td>
                     <td>{item.username}</td>
-                    <td>{item.outlet.nama}</td>
+                    {/* <td>{item.outlet.nama}</td> */}
                     <td>{item.role}</td>
                     <td>
                       <button className="bg-blue-500 hover:bg-blue-700 text-white p-2" onClick={() => this.handleEdit(item)}><Edit /></button>

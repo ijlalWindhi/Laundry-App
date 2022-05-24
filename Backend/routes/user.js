@@ -19,13 +19,13 @@ const user = model.user
 //endpoint menampilkan semua data user, method: GET, function: findAll()
 app.get("/", async (req,res) => {
     let result =  await user.findAll({
-        include: [
-            "outlet",
-            {
-                model: model.outlet,
-                as : "outlet",
-            }
-        ]
+        // include: [
+        //     "outlet",
+        //     {
+        //         model: model.outlet,
+        //         as : "outlet",
+        //     }
+        // ]
     })
     res.json({
         user: result
@@ -36,13 +36,13 @@ app.get("/", async (req,res) => {
 app.get("/:id_user", async (req, res) =>{
     let result =  await user.findOne({
         where: {id_user: req.params.id_user},
-        include: [
-            "outlet",
-            {
-                model: model.outlet,
-                as : "outlet",
-            }
-        ]
+        // include: [
+        //     "outlet",
+        //     {
+        //         model: model.outlet,
+        //         as : "outlet",
+        //     }
+        // ]
     })
     res.json({
         user: result
@@ -119,13 +119,13 @@ app.post("/auth", async (req,res) => {
   
     let result =  await user.findOne({
         where: {username: req.body.username, password: md5(req.body.password)},
-        include: [
-            "outlet",
-            {
-                model: model.outlet,
-                as : "outlet",
-            }
-        ]
+        // include: [
+        //     "outlet",
+        //     {
+        //         model: model.outlet,
+        //         as : "outlet",
+        //     }
+        // ]
     })
     if(result){
         let payload = JSON.stringify(result)

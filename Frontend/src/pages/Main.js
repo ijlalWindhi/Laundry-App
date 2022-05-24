@@ -4,6 +4,7 @@ import {Switch, Route} from 'react-router-dom';
 import Beranda from './Beranda';
 import Profil from './Profil';
 import Outlet from './Outlet';
+import OutletOwner from './OutletOwner';
 import Paket from './Paket';
 import User from './User';
 import Member from './Member';
@@ -23,6 +24,7 @@ const Main = () => (
         <Route exact path="/" component={Beranda} />
         <Route path="/profile" component={Profil} />
         <Route path="/outlet" component={Outlet} />
+        <Route path="/outletOwner" component={OutletOwner} />
         <Route path="/paket" component={Paket} />
         <Route path="/user" component={User} />
         <Route path="/member" component={Member} />
